@@ -92,21 +92,25 @@ for user in workbook:
     shipping_first_name = shipping_name[0]
     shipping_last_name = ' '.join(shipping_name[1:])
 
+    if (user[31] == "California "):
+        user[31] = "california"
+
     if (len(user[31].strip()) == 2):
-        shipping_state_long = abbrev_states_keys[abbrev_states_values.index(user[31].strip().upper())].title()
-        shipping_state_short = abbrev_states_values[abbrev_states_values.index(user[31].strip().upper())]
+        shipping_state_long = abbrev_states_keys[abbrev_states_values.index(user[31].upper())].title()
+        shipping_state_short = abbrev_states_values[abbrev_states_values.index(user[31].upper())]
 
     else:
+
         shipping_state_long = user[31].lower().title()
-        shipping_state_short = us_state_to_abbrev.get(user[31].lower()).upper()
+        shipping_state_short = us_state_to_abbrev.get(abbrev_states_keys[abbrev_states_keys.index(user[31].lower())]).upper()
 
     if (len(user[22].strip()) == 2):
-        billing_state_long = abbrev_states_keys[abbrev_states_values.index(user[22].strip().upper())].title()
-        billing_state_short = abbrev_states_values[abbrev_states_values.index(user[22].strip().upper())]
+        billing_state_long = abbrev_states_keys[abbrev_states_values.index(user[22].upper())].title()
+        billing_state_short = abbrev_states_values[abbrev_states_values.index(user[22].upper())]
 
     else:
         billing_state_long = user[22].lower().title()
-        billing_state_short = us_state_to_abbrev.get(user[22].lower())
+        billing_state_short = us_state_to_abbrev.get(abbrev_states_keys[abbrev_states_keys.index(user[31].lower())]).upper()
 
     billing_name = user[15].split()
     billing_first_name = billing_name[0]
